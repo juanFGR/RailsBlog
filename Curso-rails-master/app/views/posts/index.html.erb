@@ -1,0 +1,38 @@
+<div id="index">
+  <%= image_tag("/Images/blog.png", :alt => "rss feed") %>
+<div style="background-color:#C0C0C0; padding:5px;">
+  <h1>Listing posts</h1>
+</div>
+  <br/>
+  <br/>
+  <table class="table table-striped" >
+    <tr >
+      <th style = "background-color:#FF3300; ">Name</th>
+      <th style = "background-color:#585858 ; ">Title</th>
+      <th style = "background-color:#C0C0C0; ">Content</th>
+      <th style = "background-color:#CC3333; "></th>
+      <th style = "background-color:#CC3333; "></th>
+      <th style = "background-color:#CC3333; "></th>
+    </tr>
+
+  <% @posts.each do |post| %>
+    <tr>
+      <td><%= post.name %></td>
+      <td><%= post.title %></td>
+      <td><%= post.content %></td>
+      <td><%= link_to 'Show', post %></td>
+      <td><%= link_to 'Edit', edit_post_path(post) %></td>
+      <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+  </table>
+
+
+  <br/>
+  <%= link_to 'New Post', new_post_path %>
+
+  <br /><!--<%= will_paginate @posts %>-->
+  <div class="pager">
+      <%= will_paginate @posts, :container => false %>
+  </div>
+</div>

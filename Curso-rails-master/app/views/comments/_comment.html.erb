@@ -1,0 +1,25 @@
+
+<tr>
+<th>
+
+  <%= comment.commenter %>
+</th>
+
+<th>
+<p>
+   <%= comment.body %>
+</p>
+</th>
+<th>
+  <button class="btn btn-danger"> 
+            
+  <%= link_to 'Destroy comment', [comment.post, comment], 
+		:confirm => 'Are you sure?', 
+		:method => :delete %>
+  </button>
+</th>
+ </tr>
+
+
+
+          

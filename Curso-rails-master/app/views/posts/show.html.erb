@@ -1,0 +1,48 @@
+<div id="new">
+<p id="notice"><%= notice %></p>
+
+<table class="table table-striped" >
+ <tr >
+<th>
+  <p> <h3>Post Name:</h3>
+    <%= @post.name %>
+  </p>
+</th>
+<th>
+  <p>
+    <h3>Post Title:</h3>
+    <%= @post.title %>
+  </p>
+</th>
+<th>
+  <p>
+  <h3>Post Content:</h3>
+    <%= @post.content %>
+  </p>
+</th>
+</tr>
+</table>
+</div>
+<div style= "text-align:center;"><h2>Comments</h2></div>
+<table class="table table-striped" >
+    <tr >
+      <th style = "background-color:#FF3300; ">Commenter</th>
+      <th style = "background-color:#585858 ; ">Comment</th>
+      <th style = "background-color:#C0C0C0; "></th>
+    </tr>
+ <tr >
+<%= render @post.comments %>
+</table>
+<div style= "text-align:center;"> 
+  <h2> Add Comment: </h2>
+
+  <%= simple_form_for ([@post, @post.comments.build]) do |f| %>
+  <%= f.input :commenter, text_field: 'Your username please',:class => "tinymce" %>
+  <%= f.input :body, text_area: 'No special characters.', :class => "tinymce" %>
+  <%= f.button :submit %>
+<% end %>
+<div>
+<footer>
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>
+</footer>

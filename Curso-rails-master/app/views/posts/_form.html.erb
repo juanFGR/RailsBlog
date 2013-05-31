@@ -1,0 +1,23 @@
+<%= form_for(@post) do |f| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @post.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+<%= simple_form_for @post do |f| %>
+  <%= f.input :name, text_field: 'Your username please', :class => "tinymce" %>
+  <%= f.input :title, text_field: 'No special characters.', :class => "tinymce" %>
+  <%= f.input :content, text_area: 'Your comment here',:required=>true, :class => "tinymce" %>
+  <%= f.input :published, check_box: 'Yes, published' %>
+  <%= f.button :submit %>
+<% end %>
+
+<% end %>
